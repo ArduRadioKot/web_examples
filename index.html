@@ -128,14 +128,65 @@
             font-size: 24px;
             font-weight: bold;
         }
+
+        #score-container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#pause-button {
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #000000;
+    color: #fff;
+    cursor: pointer;
+}
+
+#pause-button:hover {
+    background-color: #000000;
+}
+        
     </style>
 </head>
 <body>
-    <div class="game">
-        <div id="dino"></div>
-        <div id="cactus"></div>
-        <div id="score">Score: 0</div>
-    </div>
+
+        <div class="game">
+            <div id="dino"></div>
+            <div id="cactus"></div>
+        </div>
+        <div id="score-container">
+            <div id="score">Score: 0</div>
+           
+            <button id="pause-button" style="margin-top: 60px;">Pause</button>
+       
+        </div>
+        <script>
+            // ... (rest of the code remains the same)
+    
+            const pauseButton = document.getElementById("pause-button");
+            let isPaused = false;
+    
+            pauseButton.addEventListener("click", function() {
+                if (isPaused) {
+                    dino.style.animationPlayState = "running";
+                    cactus.style.animationPlayState = "running";
+                    isPaused = false;
+                    pauseButton.textContent = "Pause";
+                } else {
+                    dino.style.animationPlayState = "paused";
+                    cactus.style.animationPlayState = "paused";
+                    isPaused = true;
+                    pauseButton.textContent = "Resume";
+                }
+            });
+        </script>
+    
     <script>
         const dino = document.getElementById("dino");
         const cactus = document.getElementById("cactus");
