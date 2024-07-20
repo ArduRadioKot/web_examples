@@ -17,7 +17,7 @@
             background-color: #f0f0f0; /* added background color */
         }
         
-       .game {
+      .game {
             width: 600px;
             height: 230px;
             border: 1px solid #000000;
@@ -37,9 +37,51 @@
             top: 143px;
         }
         
-       .jump {
+      .jump {
             animation: jump 0.3s linear;
         }
+
+        .game {
+    width: 600px;
+    height: 230px;
+    border: 1px solid #000000;
+    margin: auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Add media queries for smaller screens */
+@media only screen and (max-width: 768px) {
+    .game {
+        width: 90%;
+        height: 180px;
+    }
+    #dino {
+        width: 50px;
+        height: 50px;
+    }
+    #cactus {
+        width: 15px;
+        height: 30px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .game {
+        width: 80%;
+        height: 150px;
+    }
+    #dino {
+        width: 40px;
+        height: 40px;
+    }
+    #cactus {
+        width: 10px;
+        height: 20px;
+    }
+}
         
         @keyframes jump {
             0% {
@@ -102,7 +144,7 @@
         let speed = 1.2; // initial speed
 
         function jump() {
-            if (dino.classList != "jump") {
+            if (dino.classList!= "jump") {
                 //first it checks if the dino is mid-jump. If not, it makes it jump.
                 dino.classList.add("jump");
                 setTimeout(function () {
@@ -124,17 +166,25 @@
                 dino.style.animationPlayState = "paused";
                 cactus.style.animationPlayState = "paused";
                 alert("Whoops! Game Over :(");
+                // Reset dinosaur position
+                dino.style.top = "143px";
+                // Reset cactus position
+                cactus.style.left = "580px";
                 window.location.reload();
             } else {
                 // increase score and speed
                 score++;
                 scoreElement.textContent = `Score: ${score}`;
-                speed -= 0.01; // decrease speed by 0.01 every frame
+                speed -= 0.0001; // decreasespeed by 0.01 every frame
                 cactus.style.animationDuration = `${speed}s`; // update cactus animation duration
             }
         },10);
 
         document.addEventListener("keydown", function (event) {
+            jump();
+        });
+
+        document.addEventListener("touchstart", function(event) {
             jump();
         });
     </script>
