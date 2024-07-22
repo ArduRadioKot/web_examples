@@ -1,6 +1,6 @@
-#Web examples 
+# Web examples 
 This is a collection of simple pet projects for beginners
 
-##Datasheet for avr -
+## Datasheet for avr -
 
-##Google dino game - https://arduradiokot.github.io/web_examples/
+## Google dino game - https://arduradiokot.github.io/web_examples/
